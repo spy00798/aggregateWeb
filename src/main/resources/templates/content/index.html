@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>index.html</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <script th:src="@{/js/script.js}" defer></script>
+  <title>Document</title>
 </head>
 <body>
-<h1 th:text="'타임리프 페이지 - index.html'"></h1>
-<p><a th:href="@{http://www.naver.com}" th:text="'네이버로 이동..'"></a></p>
+<div class="search-wrapper">
+  <label for="search">Search Users</label>
+  <input type="search" id="search" data-search>
+</div>
+<div class="user-cards" data-user-cards-container></div>
+<template data-user-template>
+  <div class="card">
+    <div class="header" data-header></div>
+    <div class="body" data-body></div>
+  </div>
+</template>
 </body>
 </html>
