@@ -8,9 +8,8 @@ spring:
     cache : false
     check-template-location : true
   datasource:
-    main:
-      driverClassName : org.mariadb.jdbc.Driver
-      jdbc-url : jdbc:mysql://localhost:3306/aggregate?characterEncoding=UTF-8&amp;allowMultiQueries=true&autoReconnect=true
-      username : incruit
-      password : test
+    driverClassName : org.mariadb.jdbc.Driver
+    url : jdbc:mariadb://localhost:3306/aggregate
+    username : incruit
+    password : test
 
