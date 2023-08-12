@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <script th:src="@{/js/script.js}" defer></script>
+  <script th:inline="javascript">
+    let list = [[${list}]]
+  </script>
   <title>Document</title>
 </head>
 <body>
 <div class="search-wrapper">
-  <label for="search">Search Users</label>
+  <label for="search">Search QA</label>
   <input type="search" id="search" data-search>
 </div>
 <div class="user-cards" data-user-cards-container></div>
