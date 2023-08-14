@@ -8,6 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface QnAMapper {
-    @Select("SELECT * FROM qa")
+    @Select("select subject as question from kiwonsale.tguardsub where guardIDX2 = 4232")
     List<QnADTO> findQnAList(QnADTO qnaDTO);
 }
