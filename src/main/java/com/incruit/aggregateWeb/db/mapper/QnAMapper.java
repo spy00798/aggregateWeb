@@ -1,14 +1,13 @@
 package com.incruit.aggregateWeb.db.mapper;
 
-import com.incruit.aggregateWeb.db.dto.QAdto;
+import com.incruit.aggregateWeb.db.dto.QnADTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 @Mapper
-public interface QAmapper {
-
+public interface QnAMapper {
     @Select("SELECT * FROM qa")
-    List<QAdto> findQAList(QAdto qAdto);
+    List<QnADTO> findQnAList(QnADTO qnaDTO);
 }
