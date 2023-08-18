@@ -22,6 +22,12 @@ public class IndexController {
         return "QNA";
     }
 
+    @GetMapping("/About_us")
+    public String renderAboutUs(){
+        return "About_us";
+    }
+
+
     @GetMapping("/search")
     public String renderQnASearchForm(Model model, QnASearchDTO qnaDTO){
         return qnaSearchService.showQnAList(model,qnaDTO);
