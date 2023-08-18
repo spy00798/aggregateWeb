@@ -91,5 +91,17 @@ const showVoiceNotification = (message) => {
 
   setTimeout(() => {
     voiceNotification.style.display = "none";
-  }, 3000); // 2초 후에 알림 숨김
+  }, 3000); // 3초 후에 알림 숨김
 };
+
+
+function navigateTo(page) {
+  // 페이지 전환 로직 구현
+  if (page === "메인") {
+    // 홈 페이지로 이동
+    window.location.href = "index.html";
+  } else if (page === "체험하기") {
+    window.location.href = "https://m.worknsales.com";
+  } 
+
+}

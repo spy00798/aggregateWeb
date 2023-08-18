@@ -1,62 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" th:href="@{/css/QNA.css}" />
+        <link rel="stylesheet" href="css/QNA.css" />
         <title>무엇이든 문의하세요</title>
     </head>
     <body>
         <section class="popup">
-            <header>
-                <h1 class="title">문의 사항</h1>
-                <p class="subtitle">
-                    궁금하신 사항을 문의해주시면 친절하게 답해드리겠습니다.
-                </p>
-            </header>
+            <h2 class="title">문의 사항</h2>
+            <p class="subtitle">궁금하신 사항을 문의해주시면 친절하게 답해드리겠습니다.</p>
+            <p class="subtitle2">* 필수 입력</p>
             <section>
+                
                 <ul>
                     <li>
                         기업명
-                        <input
-                            type="text"
-                            id="companyInput"
-                            placeholder="기업명을 작성해주세요"
-                        />
+                        <input type="text" id="companyInput" placeholder="기업명을 작성해주세요"/>
                     </li>
                     <li>
-                        이메일 주소
-                        <input
-                            type="text"
-                            id="emailInput"
-                            placeholder="받으실 이메일의 주소를 입력해주세요"
-                        />
+                        이메일 주소 <span style="color: red;">*</span>
+                        <input type="text" id="emailInput" placeholder="받으실 이메일의 주소를 입력해주세요"/>
                     </li>
                     <li>
-                        이름/직책
-                        <input
-                            type="text"
-                            id="nameInput"
-                            placeholder="본인의 이름과 직책을 작성해주세요"
-                        />
+                        이름/직책 <span style="color: red;">*</span>
+                        <input type="text" id="nameInput" placeholder="본인의 이름과 직책을 작성해주세요"/>
                     </li>
                     <li>
-                        연락처
-                        <input
-                            type="text"
-                            id="contactInput"
-                            placeholder="연락받을 연락처를 입력해주세요"
-                        />
+                        연락처 <span style="color: red;">*</span>
+                        <input type="text" id="contactInput" placeholder="연락받을 연락처를 입력해주세요"/>
                     </li>
                     <li class="error" id="errorDisplay"></li>
                 </ul>
                 <textarea
-                    name="contact"
-                    id="contact"
-                    cols="30"
-                    rows="10"
-                    placeholder="문의내용을 입력해주세요."
-                ></textarea>
+                    name="contact" id="contact" cols="30" rows="10" placeholder="문의내용을 입력해주세요."></textarea>
+                <br />
+                <p class="error" id="errorDisplay"></p>
+                <div class="agree">
+                    <h1>개인정보 수집 및 이용 동의</h1>
+                    <form action="/submit" method="post">
+                        <input type="checkbox" id="agreeCheckbox" name="agreeCheckbox" required />
+                        <label for="agreeCheckbox">수집되는 개인정보: 이름, 이메일, 번호 등</label>
+                    </form>
                 <button id="submitButton" type="submit" disabled>전 송</button>
             </section>
 
@@ -69,6 +54,7 @@
                 const contactInput = document.getElementById("contactInput");
                 const submitButton = document.getElementById("submitButton");
                 const errorDisplay = document.getElementById("errorDisplay");
+                const agreeCheckbox = document.getElementById("agreeCheckbox");
 
                 function validateEmail(email) {
                     const emailPattern =
@@ -88,20 +74,22 @@
 
                     const isValidEmail = validateEmail(email);
                     const isValidContact = validateContact(contact);
+                    const isCheckedAgree = agreeCheckbox.checked;
 
-                    if (isValidEmail && isValidContact && name !== "") {
+                    if (isValidEmail && isValidContact && name !== "" &&isCheckedAgree) {
                         submitButton.disabled = false;
                         errorDisplay.textContent = "";
                     } else {
                         submitButton.disabled = true;
                         errorDisplay.textContent =
-                            "이메일 주소, 연락처, 이름/직책을 확인해주세요.";
+                            "필수 정보를 확인해주세요.";
                     }
                 }
 
                 emailInput.addEventListener("input", updateSubmitButton);
                 contactInput.addEventListener("input", updateSubmitButton);
                 nameInput.addEventListener("input", updateSubmitButton);
+                agreeCheckbox.addEventListener("change", updateSubmitButton);
             };
         </script>
     </body>
